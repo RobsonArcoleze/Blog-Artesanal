@@ -36,7 +36,7 @@ import lombok.Setter;
 public class User implements UserDetails, Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Getter @Setter @NonNull private Long id;
 	@Getter @Setter @NonNull private String name;
 	
@@ -89,4 +89,6 @@ public class User implements UserDetails, Serializable{
 		}
 		return false;
 	}
+
+	
 }

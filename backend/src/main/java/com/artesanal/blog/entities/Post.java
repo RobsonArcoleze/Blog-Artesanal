@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,21 +25,32 @@ import lombok.Setter;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "posts")
+@Table(name = "tb_post")
 public class Post implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Getter @Setter @NonNull private Long id;
 	
 	@Size(min = 5, message = "O título não pode ter menos que 5 caracteres!")
 	@Getter @Setter @NonNull private String title;
 
 	@Size(min = 10, message = "O conteúdo não pode ter menos que 10 caracteres!")
+	@Column(columnDefinition = "TEXT")
 	@Getter @Setter @NonNull private String body;
 	
-	@OneToMany(mappedBy = "post")
+	@Column(columnDefinition = "TEXT")
+	@Getter @Setter @NonNull private String img;
+	
+	@Column(columnDefinition = "TEXT")
+	@Getter @Setter @NonNull private String url;
+	
+	
+	@OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
 	@Getter private List<Comment> comments = new ArrayList<>();
+	
+	@Getter @Setter @NonNull private Long author;
+
 }
 

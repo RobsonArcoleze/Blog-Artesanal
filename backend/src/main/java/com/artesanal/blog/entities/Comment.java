@@ -20,11 +20,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "comments")
+@Table(name = "tb_comment")
 public class Comment {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Getter @Setter @NonNull private Long id;
 	
 	@Size(min = 5, message = "O comentário não pode ter menos que 5 caracteres!")

@@ -30,7 +30,6 @@ public class UserDTO implements Serializable{
 	
 	@Getter private Set<RoleDTO> roles = new HashSet<>();
 	
-	
 
 	public UserDTO(User entity) {
 		id = entity.getId();
@@ -39,5 +38,10 @@ public class UserDTO implements Serializable{
 		entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
 	}
 
+
+	public UserDTO(Long id) {
+		this.id = id;
+	}
+	
 }
 
