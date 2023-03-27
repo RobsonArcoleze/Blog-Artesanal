@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -38,6 +39,8 @@ public class User implements UserDetails, Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter @Setter @NonNull private Long id;
 	@Getter @Setter @NonNull private String name;
+	
+	@Column(unique = true)
 	@Getter @Setter @NonNull private String email;
 	@Getter @Setter @NonNull private String password;
 	
