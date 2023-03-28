@@ -9,20 +9,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.artesanal.blog.DTO.CommentDTO;
-import com.artesanal.blog.DTO.PostDTO;
 import com.artesanal.blog.entities.Comment;
-import com.artesanal.blog.entities.Post;
 import com.artesanal.blog.repositories.CommentRepository;
-import com.artesanal.blog.repositories.PostRepository;
 import com.artesanal.blog.services.exceptions.DataBaseException;
 import com.artesanal.blog.services.exceptions.ResourceNotFoundException;
 
 
 @Service
-public class PostService {
+public class CommentService {
 
-	@Autowired
-	private PostRepository repository;
 	
 	@Autowired
 	private CommentRepository commentRepository;
@@ -30,30 +25,24 @@ public class PostService {
 	
 	
 	@Transactional(readOnly = true)
-	public Page<PostDTO> findAllPaged(Pageable pageable){
-		Page <Post> list = repository.findAll(pageable);
-		return list.map(x -> new PostDTO(x));
+	public Page<CommentDTO> findAllPaged(Pageable pageable){
+		Page <Comment> list = commentRepository.findAll(pageable);
+		return list.map(x -> new CommentDTO(x));
 	}
 	
 	@Transactional
-	public PostDTO insert(PostDTO dto) {
-		Post entity = new Post();
-		entity.setTitle(dto.getTitle());
-		entity.setBody(dto.getBody());
-		entity.setImg(dto.getImg());
-		entity.setUrl(dto.getUrl());
+	public CommentDTO insert(CommentDTO dto, Long id) {
+		Comment entity = new Comment();
+		entity.setComment(dto.getComment());
 		entity.setAuthor(dto.getAuthor());
-		for(CommentDTO commentDTO : dto.getComments()) {
-			Comment comment = commentRepository.getReferenceById(commentDTO.getId());
-			entity.getComments().add(comment);
-		}
-		entity = repository.save(entity);
-		return new PostDTO(entity);
+		//entity.setPost(new Post(id, null, null, null, null, id));
+		entity = commentRepository.save(entity);
+		return new CommentDTO(entity);
 	}
 	
 	public void delete(Long id) {
 		try{
-			repository.deleteById(id);
+			commentRepository.deleteById(id);
 		}
 		catch (EmptyResultDataAccessException e) {
 			throw new ResourceNotFoundException("Id not found  " + id);

@@ -30,6 +30,8 @@ public class Comment {
 	@Size(min = 5, message = "O comentário não pode ter menos que 5 caracteres!")
 	@Getter @Setter @NonNull private String comment;
 	
+	@Getter @Setter @NonNull private Long author;
+	
 	@ManyToOne
 	@JoinColumn(columnDefinition = "post_id")
 	@Getter @Setter @NonNull private Post post;

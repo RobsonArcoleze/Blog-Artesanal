@@ -17,12 +17,14 @@ public class CommentDTO implements Serializable{
 
 	@Getter @Setter @NonNull private Long id;
 	@Getter @Setter @NonNull private String comment;
-	@Getter @Setter @NonNull private Long postId;
+	@Getter @Setter @NonNull private PostDTO postId;
+	@Getter @Setter @NonNull private Long author;
 	
 	public CommentDTO(Comment entity) {
 		id = entity.getId();
 		comment = entity.getComment();
-		postId = entity.getPost().getId();
+		postId = new PostDTO(entity.getPost());
+		author = entity.getAuthor();
 	}
 	
 }
