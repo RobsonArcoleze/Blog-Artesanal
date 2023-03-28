@@ -116,7 +116,7 @@ No fontend foi pedido para construir uma interface web em Angular; com toda a si
 
 # Conclusão
 
-Em minhas palavras confeso que adorei o desafio, programar é minha paixão e espero fazer isto pelo resto da vida. O código em certos momentos me desafiou ao extremo, virei a noite codificando, e achei isso prazeroso. Espero que todo o esfoço que tive e levando em consideração o tempo, esta APi seja avaliada com carinho, pois o meu sonho é ser desenvolvedor professional.
+Em minhas palavras confeso que adorei o desafio, programar é minha paixão e espero fazer isto pelo resto da vida. O código em certos momentos me desafiou ao extremo, virei a noite codificando, e achei isso prazeroso. Espero que todo o esfoço que tive e levando em consideração o tempo, esta APi seja avaliada com carinho, pois o meu sonho é ser desenvolvedor profissional.
 
 
 # Autor
